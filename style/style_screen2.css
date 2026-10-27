@@ -1,0 +1,208 @@
+/* 공통 부분 */
+.title,
+.en-title,
+.poem,
+.copy,
+.meta,
+.back {
+  position: absolute;
+  font-family: "Nanum Myeongjo";
+  color: white;
+  filter: drop-shadow(0px 0px 2px #19231b) drop-shadow(0px 0px 8px #bfe6b0);
+  opacity: 0;
+  transition: opacity 2.5s;
+}
+
+/* 화면 2: 정원 (조금 확대된 상태) */
+.park-screen {
+  z-index: 1;
+  transform: scale(1.35);
+  transition: all 3.5s;
+}
+
+/* 제목 : 오른쪽 위 세로 */
+.title {
+  top: 70px;
+  right: 110px;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+/* 단가(짧은 시) : 제목 왼쪽에 세로쓰기 */
+.poem {
+  top: 80px;
+  right: 210px;
+  font-size: 16px;
+  line-height: 2.2;
+  letter-spacing: 4px;
+  writing-mode: vertical-rl; /* 세로쓰기 : 다음 줄은 왼쪽으로 넘어감 (오른쪽부터 읽힘) / MDN 참고*/
+}
+
+/* 영문 제목 */
+.en-title {
+  top: 70px;
+  left: 80px;
+  font-size: 18px;
+  letter-spacing: 8px;
+}
+
+/* 사랑보다~ : 왼쪽 아래에 가로로 */
+.copy {
+  left: 80px;
+  bottom: 170px;
+  line-height: 1.6;
+  font-size: 26px;
+  letter-spacing: 6px;
+}
+
+/* 핑크 강조 단어 */
+.pink {
+  color: #f2a7c9;
+  filter: drop-shadow(0px 0px 3px #f2a7c9) drop-shadow(0px 0px 8px #f2a7c9);
+}
+
+/* 크레딧 : 맨 아래 작은 글씨 3줄 */
+.meta {
+  left: 80px;
+  bottom: 60px;
+  font-size: 13px;
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+/* 돌아가기 : 오른쪽 아래 작은 글씨 */
+.back {
+  right: 80px;
+  bottom: 60px;
+  font-size: 15px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+/* 돌아가기에 마우스 올리면 핑크로 */
+.back:hover {
+  color: #f2a7c9;
+}
+
+/* 햇빛 : 동그란 빛을 흐리게 번지게, 처음엔 투명 */
+.sun {
+  position: absolute;
+  left: 910px;
+  top: 570px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(255, 250, 220);
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 2s, filter 0.5s;
+  /* 쉼표로 속성마다 시간을 따로 : 나타나기 2초, 마우스 반응 0.5초 */
+  /* transition: filter 0.5s; transition-delay: 0s; 
+  쓰니까 부드럽지 않아서 활용 코드 서치 후 쉼표로 나누는 방식 채택 */
+}
+
+/* 햇빛에 마우스 올리면 : 덜 흐려져서 더 밝고 또렷하게 */
+.sun:hover {
+  filter: blur(20px);
+}
+
+/* 무지개 : SVG 대각선 6줄, 처음엔 선이 숨겨져 있음 */
+.rainbow {
+  position: absolute;
+  left: 0px;
+  top: -280px;
+  width: 100%;
+  fill: none;
+  stroke-width: 8;
+  stroke-dasharray: 750;
+  stroke-dashoffset: 750;
+  filter: blur(6px);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: stroke-dashoffset 1.5s;
+}
+
+/* 무지개 색 : 바깥 빨강 → 안쪽 보라 */
+.r1 {
+  stroke: #ff7b7b;
+}
+.r2 {
+  stroke: #ffb36b;
+}
+.r3 {
+  stroke: #fff08a;
+}
+.r4 {
+  stroke: #9de88f;
+}
+.r5 {
+  stroke: #8cc8ff;
+}
+.r6 {
+  stroke: #b49cff;
+}
+
+/* 숨쉬듯 밝아졌다 어두워짐 */
+@keyframes shine {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+/* ----------- 클릭 후 ---------- */
+
+/* 정원 : 원래 크기로 */
+.stage.open .park-screen {
+  transform: scale(1);
+}
+
+/* 제목 → 시 → 영문 제목 → 카피 → 크레딧 → 돌아가기 순서로 나타남 */
+.stage.open .title {
+  opacity: 1;
+  transition-delay: 2.5s;
+}
+.stage.open .poem {
+  opacity: 1;
+  transition-delay: 3.1s;
+}
+.stage.open .en-title {
+  opacity: 1;
+  transition-delay: 3.7s;
+}
+.stage.open .copy {
+  opacity: 1;
+  transition-delay: 4.3s;
+}
+.stage.open .meta {
+  opacity: 1;
+  transition-delay: 4.9s;
+}
+.stage.open .back {
+  opacity: 1;
+  transition-delay: 5.5s;
+}
+
+/* 클릭 후 : 햇빛이 나타나고 2.5초마다 커졌다 작아짐 */
+.stage.open .sun {
+  opacity: 1;
+  transition-delay: 2s, 0s; /* 위 transition 순서대로 : opacity는 2초 뒤, filter는 바로 */
+  animation-name: shine;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+/* 햇빛 클릭 후 무지개가 왼쪽 아래에서 오른쪽 위로 빠르게 퍼짐 */
+.stage.rainbow-on .rainbow {
+  stroke-dashoffset: 0;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>언어의 정원 60241135 김가영</title>
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style/reset.css" />
+
+    <link rel="stylesheet" href="./style/style_screen1.css" />
+    <link rel="stylesheet" href="./style/style_screen2.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="./js/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="stage">
+      <!-- 화면 1 : 포스터 -->
+      <div class="poster-screen">
+        <!-- 배경 -->
+        <img src="./image/background.jpeg" class="bg-img" />
+
+        <!-- 흔들리는 나뭇잎 6장 -->
+        <img src="./image/leaf1.png" class="leaf leaf1" />
+        <img src="./image/leaf2.png" class="leaf leaf2" />
+        <img src="./image/leaf3.png" class="leaf leaf3" />
+        <img src="./image/leaf4.png" class="leaf leaf4" />
+        <img src="./image/leaf5.png" class="leaf leaf5" />
+        <img src="./image/leaf6.png" class="leaf leaf6" />
+
+        <!-- 어두운 막 : 비 오는 날처럼 화면을 살짝 어둡게 -->
+        <div class="dark"></div>
+
+        <!-- 비는 수업 예제 svg 이용, 굵기,속도,움직임 등은 가까운 비와 먼 비가 구분되도록 수정 -->
+        <!-- 비 1 : 가까운 (굵고 빠른) 비 -->
+        <svg class="rain rain-1" viewBox="0 0 647 491">
+          <path d="M570.616 184.731L610.116 116.315" />
+          <path d="M388.866 281.023L428.366 212.607" />
+          <path d="M442.866 89.0234L482.366 20.6074" />
+          <path d="M310.866 175.023L350.366 106.607" />
+          <path d="M250.866 357.023L290.366 288.607" />
+          <path d="M457.866 370.023L497.366 301.607" />
+          <path d="M298.866 492.023L338.366 423.607" />
+          <path d="M81.866 357.023L121.366 288.607" />
+          <path d="M28.866 218.023L68.366 149.607" />
+          <path d="M154.866 82.0234L194.366 13.6074" />
+          <path d="M0.86603 55.0234L40.366 -13.3926" />
+          <path d="M169.866 191.023L209.366 122.607" />
+          <path d="M605.866 323.023L645.366 254.607" />
+        </svg>
+
+        <!-- 비 2 : 중간 비 -->
+        <svg class="rain rain-2" viewBox="0 0 674 438">
+          <path d="M645.433 110.285L673.166 62.25" />
+          <path d="M570.433 48.2845L598.166 0.249997" />
+          <path d="M462.992 120.34L490.724 72.3058" />
+          <path d="M370.315 180.72L398.048 132.686" />
+          <path d="M497.433 437.285L525.166 389.25" />
+          <path d="M469.433 284.285L497.166 236.25" />
+          <path d="M361.89 403.285L389.623 355.25" />
+          <path d="M209.536 308.502L237.268 260.467" />
+          <path d="M81.433 437.285L109.166 389.25" />
+          <path d="M0.433015 368.285L28.1658 320.25" />
+          <path d="M40.433 91.2845L68.1658 43.25" />
+          <path d="M87.433 216.285L115.166 168.25" />
+          <path d="M260.789 115.426L288.521 67.3912" />
+          <path d="M152.666 96.4691L180.399 48.4346" />
+          <path d="M271.32 191.954L299.053 143.919" />
+          <path d="M610.433 397.285L638.166 349.25" />
+        </svg>
+
+        <!-- 비 3 : 먼 (가늘고 느린) 비 -->
+        <svg class="rain rain-3" viewBox="0 0 752 491">
+          <path d="M722.494 212.617L777.868 116.708" />
+          <path d="M467.706 347.606L523.079 251.696" />
+          <path d="M543.406 78.4481L598.78 -17.4617" />
+          <path d="M358.361 199.008L413.734 103.098" />
+          <path d="M274.249 454.147L329.623 358.237" />
+          <path d="M564.434 472.371L619.808 376.461" />
+          <path d="M37.3343 454.147L92.7079 358.237" />
+          <path d="M-36.9644 259.288L18.4092 163.378" />
+          <path d="M139.67 68.6351L195.044 -27.2747" />
+          <path d="M160.698 221.438L216.072 125.528" />
+        </svg>
+
+        <!-- 마우스 빛 -->
+        <div class="cursor-light"></div>
+
+        <!-- 구두 클릭 : 빛 + 퍼지는 물결 + 안내 문구, 누르면 화면 전환 -->
+        <div class="shoes">
+          <div class="glow"></div>
+          <div class="ring"></div>
+          <p class="hint">구두를 눌러보세요</p>
+        </div>
+      </div>
+
+      <!-- 화면 2 : 하늘에서 본 정원 -->
+      <div class="park-screen">
+        <!-- 정원 사진 -->
+        <img src="./image/park.jpg" class="park-img" />
+
+        <!-- 햇빛 -->
+        <div class="sun"></div>
+
+        <!-- 무지개 : 햇빛을 누르면 왼쪽 아래에서 오른쪽 위로 퍼짐 -->
+        <svg class="rainbow" viewBox="0 0 600 400">
+          <path class="r1" d="M 0 340 L 600 -60" />
+          <path class="r2" d="M 0 348 L 600 -52" />
+          <path class="r3" d="M 0 356 L 600 -44" />
+          <path class="r4" d="M 0 364 L 600 -36" />
+          <path class="r5" d="M 0 372 L 600 -28" />
+          <path class="r6" d="M 0 380 L 600 -20" />
+        </svg>
+
+        <!-- 제목 -->
+        <h1 class="title">언<br />어<br />의<br /><br />정<br />원</h1>
+
+        <!-- 제목 왼쪽에 세로로 이어지는 시-->
+        <!-- br로 계속 띄워 적용 가능한 코드지만, 너무 코드가 길어져서 서치 후 writing-mode를 활용해서 작성-->
+        <p class="poem">
+          천둥소리가 희미하게 울리고<br />
+          비가 오지 않아도<br />
+          나는 여기 있겠어요<br />
+          당신이 붙잡는다면
+        </p>
+
+        <!-- 영문 제목 : 왼쪽 위 -->
+        <p class="en-title">THE GARDEN OF WORDS</p>
+
+        <!-- 카피 : 가로로, "사랑" · "고독과 슬픔" 만 핑크 -->
+        <p class="copy">
+          <span class="pink">“사랑”</span>보다 더 오래된,<br />
+          <span class="pink">“고독과 슬픔”</span>에 관한 이야기
+        </p>
+        <!-- 크레딧 : 맨 아래 3줄 -->
+        <p class="meta">
+          2013. 05. 31 · 46min<br />
+          감독 · 각본 신카이 마코토 | 아키즈키 타카오 · 유키노 유카리<br />
+          ©Makoto Shinkai / CoMix Wave Films
+        </p>
+
+        <!-- 누르면 다시 비 오는 포스터로 -->
+        <p class="back">↺ 다시 비 내리기</p>
+      </div>
+    </div>
+  </body>
+</html>
